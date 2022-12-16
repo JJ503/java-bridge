@@ -30,9 +30,9 @@ public enum BridgeDraw {
     private static String initStringBuilder(List<String> bridgeDraws) {
         StringBuilder bridgeMap = new StringBuilder();
 
-        bridgeMap.append(START_BRIDGE);
+        bridgeMap.append(START_BRIDGE.element);
         bridgeMap.append(String.join(SPLIT_BRIDGE.element, bridgeDraws));
-        bridgeMap.append(END_BRIDGE);
+        bridgeMap.append(END_BRIDGE.element);
 
         return bridgeMap.toString();
     }
@@ -49,7 +49,7 @@ public enum BridgeDraw {
     private static List<String> getLowerElementByGrade(List<Position> positions, List<Boolean> grades) {
         List<String> bridgeDraws = new ArrayList<>();
         for (int i = 0; i < positions.size(); i++) {
-            bridgeDraws.add(getUpperElementByGrade(positions.get(i), grades.get(i)).element);
+            bridgeDraws.add(getLowerElementByGrade(positions.get(i), grades.get(i)).element);
         }
 
         return bridgeDraws;
