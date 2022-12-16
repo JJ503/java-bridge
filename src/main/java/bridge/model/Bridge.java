@@ -43,4 +43,12 @@ public class Bridge {
     public void resetBridge() {
         bridge.clear();
     }
+
+    public boolean isSameSize(int size) {
+        return size == bridge.size();
+    }
+
+    public boolean isAllCorrect(List<Position> checkBridge) {
+        return checkBridge.equals(bridge);
+    }
 }
