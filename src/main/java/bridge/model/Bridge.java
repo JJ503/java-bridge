@@ -22,4 +22,16 @@ public class Bridge {
     public void addPosition(String position) {
         bridge.add(Position.getPositionByMark(position));
     }
+
+    public boolean isMatchPosition(Position position, int index) {
+        return position.equals(bridge.get(index));
+    }
+
+    public int getBridgeSize() {
+        return bridge.size();
+    }
+
+    public Position getPositionByIndex(int index) {
+        return bridge.get(index);
+    }
 }
