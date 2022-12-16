@@ -43,6 +43,7 @@ public class BridgeGameController {
         TryCount tryCount = new TryCount();
 
         while (gameState) {
+            bridge.resetBridge();
             gameLoop(bridgeGame, tryCount);
             gameState = askRetry();
         }
