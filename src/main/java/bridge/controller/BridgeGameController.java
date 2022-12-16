@@ -44,6 +44,7 @@ public class BridgeGameController {
 
         while (gameState) {
             gameLoop(bridgeGame, tryCount);
+            gameState = askRetry();
         }
     }
 
@@ -59,5 +60,14 @@ public class BridgeGameController {
 
     private boolean tryOnce(BridgeGame bridgeGame) {
         return bridgeGame.move(inputView.readMoving());
+    }
+
+    private boolean askRetry() {
+        try {
+            return Reply.getReply(inputView.readGameCommand());
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return askRetry();
+        }
     }
 }
