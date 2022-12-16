@@ -6,11 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bridge {
-    private final List<Position> bridge = new ArrayList<>();
+    private final List<Position> bridge;
 
     public Bridge(List<String> bridge) {
+        this.bridge = new ArrayList<>();
         for (String position : bridge) {
-            this.bridge.add(Position.getPositionByMark(position));
+            addPosition(position);
         }
+    }
+
+    public Bridge() {
+        this.bridge = new ArrayList<>();
+    }
+
+    public void addPosition(String position) {
+        bridge.add(Position.getPositionByMark(position));
     }
 }
