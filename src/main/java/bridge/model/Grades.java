@@ -14,4 +14,8 @@ public class Grades {
     public List<Boolean> getGrades() {
         return Collections.unmodifiableList(grades);
     }
+
+    public void resetGrades() {
+        grades.clear();
+    }
 }

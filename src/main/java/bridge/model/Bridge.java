@@ -39,4 +39,8 @@ public class Bridge {
     public Position getPositionByIndex(int index) {
         return bridge.get(index);
     }
+
+    public void resetBridge() {
+        bridge.clear();
+    }
 }
