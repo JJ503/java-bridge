@@ -2,9 +2,13 @@ package bridge.controller;
 
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.constants.Reply;
 import bridge.model.Bridge;
+import bridge.model.TryCount;
+import bridge.service.BridgeGame;
 import bridge.view.InputView;
 import bridge.view.OutputView;
+import org.junit.platform.commons.function.Try;
 
 import java.util.List;
 
@@ -15,6 +19,7 @@ public class BridgeGameController {
     public void startBridgeGame() {
         outputView.printStartGameMessage();
         Bridge bridge = initBridge();
+        proceedGame(bridge);
     }
 
     private Bridge initBridge() {
@@ -30,5 +35,29 @@ public class BridgeGameController {
             System.out.println(exception.getMessage());
             return enterBridgeSize();
         }
+    }
+
+    private void proceedGame(Bridge bridge) {
+        boolean gameState = true;
+        BridgeGame bridgeGame = new BridgeGame(bridge);
+        TryCount tryCount = new TryCount();
+
+        while (gameState) {
+            gameLoop(bridgeGame, tryCount);
+        }
+    }
+
+    private void gameLoop(BridgeGame bridgeGame, TryCount tryCount) {
+        boolean gameOneState = true;
+
+        while (gameOneState) {
+            tryCount.addTryCount();
+            gameOneState = tryOnce(bridgeGame);
+            outputView.printMap(bridgeGame.getMap());
+        }
+    }
+
+    private boolean tryOnce(BridgeGame bridgeGame) {
+        return bridgeGame.move(inputView.readMoving());
     }
 }
