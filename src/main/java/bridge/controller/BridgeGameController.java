@@ -43,10 +43,20 @@ public class BridgeGameController {
         TryCount tryCount = new TryCount();
 
         while (gameState) {
-            bridge.resetBridge();
+            bridgeGame.retry();
             gameLoop(bridgeGame, tryCount);
-            gameState = askRetry();
+            gameState = checkIsSuccess(bridgeGame);
         }
+        outputView.printResult(bridgeGame.getMap(), bridgeGame.getIsSuccess(),
+                tryCount.getTryCount());
+    }
+
+    private boolean checkIsSuccess(BridgeGame bridgeGame) {
+        if (bridgeGame.getIsSuccess()) {
+            return false;
+        }
+
+        return askRetry();
     }
 
     private void gameLoop(BridgeGame bridgeGame, TryCount tryCount) {
