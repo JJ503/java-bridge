@@ -14,7 +14,7 @@ public enum Position {
     private static final Map<Integer, Position> POSITION_BY_NUMBER = Stream.of(values())
             .collect(Collectors.toMap(Position::getMatchNumber, Function.identity()));
 
-    private final String mark;
+    public final String mark;
     private final int randomNumber;
 
     Position(String mark, int randomNumber) {
@@ -22,7 +22,7 @@ public enum Position {
         this.randomNumber = randomNumber;
     }
 
-    private String getMark() {
+    public String getMark() {
         return mark;
     }
 
@@ -30,11 +30,11 @@ public enum Position {
         return randomNumber;
     }
 
-    public Position getPositionByMark(String mark) {
+    public static Position getPositionByMark(String mark) {
         return POSITION_BY_MARK.get(mark);
     }
 
-    public Position getPositionByNumber(int number) {
+    public static Position getPositionByNumber(int number) {
         return POSITION_BY_NUMBER.get(number);
     }
 }
