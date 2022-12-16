@@ -28,7 +28,7 @@ public enum Reply {
         return retryState;
     }
 
-    private static boolean getReply(String reply) {
+    public static boolean getReply(String reply) {
         return RETRY_BY_MARK.get(reply);
     }
 }
