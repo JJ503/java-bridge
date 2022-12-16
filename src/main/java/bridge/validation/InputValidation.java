@@ -13,6 +13,11 @@ public class InputValidation {
         return sizeNumber;
     }
 
+    public static String validateReply(String checkValue) {
+        isExist(checkValue);
+        return checkValue;
+    }
+
     private static void isExist(String inputValue) {
         if (inputValue.isEmpty()) {
             ExceptionMessage.NONE_INPUT.throwException();
