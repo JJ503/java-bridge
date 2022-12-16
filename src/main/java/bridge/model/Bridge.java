@@ -3,6 +3,7 @@ package bridge.model;
 import bridge.constants.Position;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Bridge {
@@ -17,6 +18,10 @@ public class Bridge {
 
     public Bridge() {
         this.bridge = new ArrayList<>();
+    }
+
+    public List<Position> getBridge() {
+        return Collections.unmodifiableList(bridge);
     }
 
     public void addPosition(String position) {
